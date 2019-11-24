@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<div class="container-fluid bg-2 text-center">
+  <h3> Welcome to my Portfolio!</h3><br/>
+   <h5>My Name is Lucas Liew. </h5><br/>
+</div>
+
+<div class="container-fluid bg-2 text-center">
+  <h3>Get to Know Me:</h3>
+   <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Click to Read More</button>
+  <div id="demo" class="collapse">
+    I am a team player who believes in collaboration. I am intrigued and excited about all types of technology and would spend time getting to know them and keep myself updated. I am very meticulous in everything I do and have been trained in my academic and work experience to be adaptable, enduring and disciplined with work.<br/>
+  </div>
+  <br/>
+  <br/>
+	My Education: <br/>
+	2017 - Current : Ngee Ann Polytechnic ( Diploma in IT)<br/>
+	2013-2016 : St.Hilda's Secondary School ( GCE O' Levels)
+  </p>
+</div>
+<h1>Projects</h1>
+<div class="row">
+{% for project in projects %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static project.image %}">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{ project.description }}</p>
+                <a href="{% url 'project_detail' project.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
